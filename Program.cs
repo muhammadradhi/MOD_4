@@ -66,24 +66,24 @@ namespace Modul4_103022400055
         }
     }
 
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            KodePaket kp = new KodePaket();
-            Console.WriteLine("Kode Paket Student: " + kp.GetKodePaket("Student"));
-            Console.WriteLine();
+    //class Program
+    //{
+    //    static void Main(string[] args)
+    //    {
+    //        KodePaket kp = new KodePaket();
+    //        Console.WriteLine("Kode Paket Student: " + kp.GetKodePaket("Student"));
+    //        Console.WriteLine();
 
-            MesinKopi mesin = new MesinKopi();
-            mesin.Transisi(MesinKopi.State.STANDBY);
-            mesin.Transisi(MesinKopi.State.BREWING);
-            mesin.Transisi(MesinKopi.State.STANDBY);
-            mesin.Transisi(MesinKopi.State.MAINTENANCE);
-            mesin.Transisi(MesinKopi.State.STANDBY);
-            mesin.Transisi(MesinKopi.State.OFF);
-            mesin.Transisi(MesinKopi.State.BREWING);
+    //        MesinKopi mesin = new MesinKopi();
+    //        mesin.Transisi(MesinKopi.State.STANDBY);
+    //        mesin.Transisi(MesinKopi.State.BREWING);
+    //        mesin.Transisi(MesinKopi.State.STANDBY);
+    //        mesin.Transisi(MesinKopi.State.MAINTENANCE);
+    //        mesin.Transisi(MesinKopi.State.STANDBY);
+    //        mesin.Transisi(MesinKopi.State.OFF);
+    //        mesin.Transisi(MesinKopi.State.BREWING);
 
-            Console.ReadKey();
-        }
-    }
+    //        Console.ReadKey();
+    //    }
+    //}
 }
