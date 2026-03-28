@@ -19,7 +19,71 @@ namespace Modul4_103022400055
             {
                 return tabelKode[namaPaket];
             }
-            return "Kode tidak ditemukan";
+            return "Perubahan state tidak valid";
+        }
+    }
+
+    public class MesinKopi
+    {
+        public enum State { OFF, STANDBY, BREWING, MAINTENANCE }
+        public State currentState;
+
+        public MesinKopi()
+        {
+            currentState = State.OFF;
+        }
+
+        public void Transisi(State nextState)
+        {
+            bool valid = false;
+
+            switch (currentState)
+            {
+                case State.OFF:
+                    if (nextState == State.STANDBY) valid = true;
+                    break;
+                case State.STANDBY:
+                    if (nextState == State.BREWING || nextState == State.MAINTENANCE || nextState == State.OFF)
+                        valid = true;
+                    break;
+                case State.BREWING:
+                    if (nextState == State.STANDBY) valid = true;
+                    break;
+                case State.MAINTENANCE:
+                    if (nextState == State.STANDBY) valid = true;
+                    break;
+            }
+
+            if (valid)
+            {
+                Console.WriteLine($"Mesin {currentState} berubah menjadi {nextState}");
+                currentState = nextState;
+            }
+            else
+            {
+                Console.WriteLine("Perubahan state tidak valid");
+            }
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            KodePaket kp = new KodePaket();
+            Console.WriteLine("Kode Paket Student: " + kp.GetKodePaket("Student"));
+            Console.WriteLine();
+
+            MesinKopi mesin = new MesinKopi();
+            mesin.Transisi(MesinKopi.State.STANDBY);
+            mesin.Transisi(MesinKopi.State.BREWING);
+            mesin.Transisi(MesinKopi.State.STANDBY);
+            mesin.Transisi(MesinKopi.State.MAINTENANCE);
+            mesin.Transisi(MesinKopi.State.STANDBY);
+            mesin.Transisi(MesinKopi.State.OFF);
+            mesin.Transisi(MesinKopi.State.BREWING);
+
+            Console.ReadKey();
         }
     }
 }
